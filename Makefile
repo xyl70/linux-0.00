@@ -1,14 +1,11 @@
 AS = nasm
 OBJ = boot head
 
-all: disk
+all: a.img
 
-Image: $(OBJ)
-	dd bs=512 if=boot of=Image count=1
-	dd bs=512 if=head of=Image seek=1
-disk:Image
-	dd bs=8192 if=Image of=a.img
-	rm -f Image
+a.img: $(OBJ)
+	dd bs=512 if=boot of=a.img count=1
+	dd bs=512 if=head of=a.img seek=1
 
 $(OBJ):%: %.s
 	$(AS) $< -o $@
