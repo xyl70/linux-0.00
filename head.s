@@ -95,7 +95,7 @@ write_char:
     mov [gs:ebx], al                                                        ;实际显示位置对应的显示内存偏移地址要乘 2。
     shr ebx, 1                                                                  ;把字符放到显示内存后把位置值除 2 加 1,此时位置值对
     inc ebx                                                                       ;应下一个显示位置。如果该位置大于 2000,则复位成 0。
-    cmp ebx, 20000 
+    cmp ebx, 2000 
     jb w1
     mov ebx, 0
 w1:
